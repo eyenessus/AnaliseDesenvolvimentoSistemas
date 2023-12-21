@@ -5,7 +5,8 @@ programa
 	{
 		real custo,garcomHoras = 10.50
 		inteiro horasTotal,Qntgarcom
-		leia(Qntgarcom)
+		escreva("Qual quantidade de garçons?")
+		leia(Qntgarcom)
 		escreva("Quantidade de horas ?")
 		leia(horasTotal)
 		escreva("Custo total: R$" + horasTotal*garcomHoras*Qntgarcom)
@@ -16,7 +17,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 245; 
+ * @POSICAO-CURSOR = 155; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
