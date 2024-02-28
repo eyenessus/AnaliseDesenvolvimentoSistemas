@@ -1,4 +1,4 @@
-
+USE  hospital_db_enoun;
 INSERT INTO receitas(receita) VALUES ("Dipirona 1 comprimido de 6 em 6 horas por 3 dias");
 INSERT INTO receitas(receita) VALUES ("Paracetamol 1 comprimido de 6 em 6 horas por 3 dias");
 INSERT INTO receitas(receita) VALUES ("Ibuprofeno 1 comprimido de 6 em 6 horas por 3 dias");
@@ -32,34 +32,24 @@ INSERT INTO enfermeiros(nome,cpf,cre) VALUES ("Fernanda","123",7);
     INSERT INTO medicos(nome,data_nascimento,cpf,crm,uc_crm,especialidade_id,telefone,endereco_completo) VALUES ("Mariana","1989-06-05","23456789012",567890,"BA",7,"(71) 2345-6789","Avenida 8, 901");
     
  
-INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email) VALUES ("Maria","1980-01-01","11111111111","123456789","teste@gmail.com");
-INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email) VALUES ("João","1980-01-01","22222222222","123456789","tt@gmail.com");
-INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email) VALUES ("José","1980-01-01","33333333333","123456789","amz@amz.com");
-INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email) VALUES ("Ana","1985-05-10","44444444444","987654321","xx@apple.com");
-INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email) VALUES ("Paulo","1978-09-15","55555555555","567890123","pop@apple.com");
-INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email) VALUES ("Pedro","1990-03-25","66666666666","345678901","ss@apple.com");
-INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email) VALUES ("Fernanda","1982-07-12","77777777777","678901234","xx@te.com");
-INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email) VALUES ("Carlos","1987-11-30","88888888888","456789012","hoj@gmail.com");
-INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email) VALUES ("Juliana","1995-02-18","99999999999","890123456","xx@gmail.com");
-INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email) VALUES ("Ricardo","1989-06-05","00000000000","234567890","goku@gmail.com");
-
-
-
     INSERT INTO convenios(nome,cnpj,tempo_carencia) VALUES ("Unimed","12345678901234","2021-01-01");
     INSERT INTO convenios(nome,cnpj,tempo_carencia) VALUES ("Amil","12345678901234","2021-01-01");
     INSERT INTO convenios(nome,cnpj,tempo_carencia) VALUES ("Sulamerica","12345678901234","2021-01-01");
     INSERT INTO convenios(nome,cnpj,tempo_carencia) VALUES ("Bradesco","12345678901234","2021-01-01");
- 
 
-    INSERT INTO consultas(data_hora,paciente_id,valor,especialidades_medico_id,receitas,fk_medico_responsavel) VALUES ("2019-05-15",1,223.00,1,1,1);
-    INSERT INTO consultas(data_hora,paciente_id,valor,especialidades_medico_id,receitas,fk_medico_responsavel) VALUES ("2018-07-20",1,323.00,2,2,2);
-    INSERT INTO consultas(data_hora,paciente_id,valor,especialidades_medico_id,receitas,fk_medico_responsavel) VALUES ("2020-10-10",1,533.00,3,3,3);
-    INSERT INTO consultas(data_hora,paciente_id,valor,especialidades_medico_id,receitas,fk_medico_responsavel) VALUES ("2017-12-05",4,221.00,4,2,4);
-    INSERT INTO consultas(data_hora,paciente_id,valor,especialidades_medico_id,receitas,fk_medico_responsavel) VALUES ("2022-03-25",2,4345.00,5,2,5);
-  
-    
 
-    INSERT INTO tipo_quarto(descricao,valor_diaria) VALUES ("apartamentos",100.00);
+INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email,convenio_id) VALUES ("Maria","1980-01-01","11111111111","123456789","teste@gmail.com", 1);
+INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email,convenio_id) VALUES ("João","1980-01-01","22222222222","123456789","tt@gmail.com", 2);
+INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email,convenio_id) VALUES ("José","1980-01-01","33333333333","123456789","amz@amz.com", 3);
+INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email) VALUES ("Ana","1985-05-10","44444444444","987654321","xx@apple.com");
+INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email,convenio_id) VALUES ("Paulo","1978-09-15","55555555555","567890123","pop@apple.com", 2);
+INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email,convenio_id) VALUES ("Pedro","1990-03-25","66666666666","345678901","ss@apple.com", 3);
+INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email,convenio_id) VALUES ("Fernanda","1982-07-12","77777777777","678901234","xx@te.com", 2);
+INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email,convenio_id) VALUES ("Carlos","1987-11-30","88888888888","456789012","hoj@gmail.com", 3);
+INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email) VALUES ("Juliana","1995-02-18","99999999999","890123456","xx@gmail.com");
+INSERT INTO pacientes(nome,data_nascimento,cpf,rg,email) VALUES ("Ricardo","1989-06-05","00000000000","234567890","goku@gmail.com");
+
+INSERT INTO tipo_quarto(descricao,valor_diaria) VALUES ("apartamentos",100.00);
     INSERT INTO tipo_quarto(descricao,valor_diaria) VALUES ("quartos duplos ",200.00);
     INSERT INTO tipo_quarto(descricao,valor_diaria) VALUES ("enfermaria",300.00);
 
@@ -70,13 +60,25 @@ INSERT INTO quartos(numero,id_tipo_quarto) VALUES (4,2);
 INSERT INTO quartos(numero,id_tipo_quarto) VALUES (5,3);
 INSERT INTO quartos(numero,id_tipo_quarto) VALUES (6,3);
 
+ 
 
-INSERT INTO internacoes(data_entrada,data_prev_alta,procedimento,paciente_id,quarto_id,enfermeiro_id) VALUES ("2021-01-01","2021-01-10","Cirurgia de apendicite",2,1,1);
-INSERT INTO internacoes(data_entrada,data_prev_alta,procedimento,paciente_id,quarto_id,enfermeiro_id) VALUES ("2021-01-01","2021-01-10","Cirurgia de apendicite",2,2,2);
-INSERT INTO internacoes(data_entrada,data_prev_alta,procedimento,paciente_id,quarto_id,enfermeiro_id) VALUES ("2021-01-01","2021-01-10","Cirurgia de apendicite",3,3,3);
-INSERT INTO internacoes(data_entrada,data_prev_alta,procedimento,paciente_id,quarto_id,enfermeiro_id) VALUES ("2021-01-01","2021-01-10","Cirurgia de apendicite",4,3,4);
-INSERT INTO internacoes(data_entrada,data_prev_alta,procedimento,paciente_id,quarto_id,enfermeiro_id) VALUES ("2021-01-01","2021-01-10","Cirurgia de apendicite",5,3,5);
-INSERT INTO internacoes(data_entrada,data_prev_alta,procedimento,paciente_id,quarto_id,enfermeiro_id) VALUES ("2021-01-01","2021-01-10","Cirurgia de apendicite",5,2,6);
-INSERT INTO internacoes(data_entrada,data_prev_alta,procedimento,paciente_id,quarto_id,enfermeiro_id) VALUES ("2021-01-01","2021-01-10","Cirurgia de apendicite",7,1,2);
+    INSERT INTO consultas(data_hora,paciente_id,valor,especialidades_medico_id,receitas,fk_medico_responsavel) VALUES ("2019-05-15",10,223.00,1,1,1);
+    INSERT INTO consultas(data_hora,paciente_id,valor,especialidades_medico_id,receitas,fk_medico_responsavel) VALUES ("2020-07-20",10,323.00,2,2,2);
+    INSERT INTO consultas(data_hora,paciente_id,valor,especialidades_medico_id,receitas,fk_medico_responsavel) VALUES ("2020-10-10",4,533.00,3,3,3);
+    INSERT INTO consultas(data_hora,paciente_id,valor,especialidades_medico_id,receitas,fk_medico_responsavel) VALUES ("2017-12-05",3,221.00,4,2,4);
+    INSERT INTO consultas(data_hora,paciente_id,valor,especialidades_medico_id,receitas,fk_medico_responsavel) VALUES ("2020-03-25",9,4345.00,5,2,5);
+  
+    
 
+    
+
+
+
+INSERT INTO internacoes(data_entrada,data_prev_alta,procedimento,paciente_id,quarto_id,enfermeiro_id) VALUES ("2018-01-01","2018-01-10","Cirurgia de apendicite",2,1,1);
+INSERT INTO internacoes(data_entrada,data_prev_alta,procedimento,paciente_id,quarto_id,enfermeiro_id) VALUES ("2019-01-01","2019-01-10","Cirurgia de apendicite",2,2,2);
+INSERT INTO internacoes(data_entrada,data_prev_alta,procedimento,paciente_id,quarto_id,enfermeiro_id) VALUES ("2020-01-01","2020-01-10","Cirurgia de apendicite",3,3,3);
+INSERT INTO internacoes(data_entrada,data_prev_alta,procedimento,paciente_id,quarto_id,enfermeiro_id) VALUES ("2018-01-01","2018-01-10","Cirurgia de apendicite",4,3,4);
+INSERT INTO internacoes(data_entrada,data_prev_alta,procedimento,paciente_id,quarto_id,enfermeiro_id) VALUES ("2019-01-01","2019-01-10","Cirurgia de apendicite",5,3,5);
+INSERT INTO internacoes(data_entrada,data_prev_alta,procedimento,paciente_id,quarto_id,enfermeiro_id) VALUES ("2020-01-01","2020-01-10","Cirurgia de apendicite",5,2,6);
+INSERT INTO internacoes(data_entrada,data_prev_alta,procedimento,paciente_id,quarto_id,enfermeiro_id) VALUES ("2018-01-01","2018-01-10","Cirurgia de apendicite",7,1,2);
 
