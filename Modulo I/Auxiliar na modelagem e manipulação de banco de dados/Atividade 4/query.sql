@@ -73,7 +73,12 @@ SELECT M.nome, SUM(C.fk_medico_responsavel = M.idmedicos) as quantidadeConsultas
 
 
 #Os nomes, os números de registro no CRE dos enfermeiros que participaram de mais de uma internação e os números de internações referentes a esses profissionais.
-
+SELECT F.nome,F.cre, COUNT(I.enfermeiro_id = F.id_enfermeiros) AS quantidadeConsulta
+FROM enfermeiros as F 
+JOIN internacoes as I
+ON F.id_enfermeiros = I.enfermeiro_id
+GROUP BY F.id_enfermeiros
+HAVING  COUNT(I.enfermeiro_id = F.id_enfermeiros) >= 2
 
 #extra idealizada por  mim
 #busca todos as internacoes e enfermeiro responsavel
