@@ -6,5 +6,4 @@ UPDATE internacoes  JOIN quartos ON internacoes.quarto_id = quartos.id_quartos J
 SET internacoes.data_prev_alta = internacoes.data_entrada + 3
 WHERE tipo_quarto.descricao = "enfermaria"
 
-DELETE FROM convenios,consultas JOIN pacientes as Pa ON Pa.convenio_id = convenios.id_convenios JOIN consultas ON consultas.idconsultas=pacientes.id_pacientes
-WHERE convenios.id_convenios = (SELECT MAX(convenios.id_convenios) FROM convenios) 
+DELETE conv,consu FROM convenios as conv JOIN pacientes as p ON conv.id_convenios = p.convenio_id JOIN consultas as consu ON consu.paciente_id = p.id_pacientes JOIN (SELECT MAX(convenios.id_convenios) as counter FROM convenios GROUP BY convenios.id_convenios) as t WHERE conv.id_convenios = t.counter

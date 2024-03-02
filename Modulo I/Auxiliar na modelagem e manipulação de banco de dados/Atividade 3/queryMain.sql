@@ -53,7 +53,6 @@ CREATE TABLE consultas (
     paciente_id INT,
     valor decimal(10, 2),
     especialidades_medico_id int,
-    receitas int,
     fk_medico_responsavel INT,
     FOREIGN KEY (fk_medico_responsavel) REFERENCES medicos(idmedicos),
     FOREIGN KEY (paciente_id) REFERENCES pacientes(id_pacientes),
