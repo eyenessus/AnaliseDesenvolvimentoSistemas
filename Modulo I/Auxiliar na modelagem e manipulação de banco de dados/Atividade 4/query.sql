@@ -26,13 +26,38 @@ ON C2.paciente_id = P2.id_pacientes
 WHERE P2.convenio_id IS NULL)
 
 #Todos os dados das internações em seus respectivos quartos, calculando o total da internação a partir do valor de diária do quarto e o número de dias entre a entrada e a alta
-#dat procedimento e número de quarto de internações em quartos do tipo “apartamento”
 SELECT *, 
-SUM(TQ.valor_diaria * DATEDIFF(I.data_prev_alta,I.data_entrada)) AS totalDiaria
-FROM internacoes AS I
-JOIN quartos AS Q
-ON I.quarto_id = Q.id_quartos
-JOIN tipo_quarto as TQ
-ON TQ.id_tipo_quarto = Q.id_quartos
+(TQ.valor_diaria * TIMESTAMPDIFF(DAY,data_entrada,data_prev_alta)) AS TotalInternacao,
+TIMESTAMPDIFF(DAY,data_entrada,data_prev_alta) as totalDeDias
+FROM internacoes as I 
+JOIN quartos as Q ON I.quarto_id = Q.id_quartos
+JOIN tipo_quarto as TQ ON Q.id_quartos = TQ.id_tipo_quarto
+
+
+#data procedimento e número de quarto de internações em quartos do tipo “apartamento”
+SELECT I.data_entrada as Data_Entrada, I.procedimento, quarto_id as NumeroQuarto 
+FROM internacoes as I 
+JOIN quartos as Q ON I.quarto_id = Q.id_quartos
+JOIN tipo_quarto as TQ ON Q.id_tipo_quarto = TQ.id_tipo_quarto
 WHERE TQ.descricao = "apartamentos"
 
+#Nome do paciente, data da consulta e especialidade de todas as consultas em que os pacientes eram menores de 18 anos na data da consulta e cuja especialidade não seja “pediatria”, ordenando por data de realização da consulta
+SELECT P.nome as nomePaciente,C.data_hora as Data, ES.especialidade as Especialidade
+FROM consultas as C 
+JOIN pacientes AS P
+ON C.paciente_id = P.id_pacientes
+JOIN especialidades_medicos as ES
+ON ES.id_especialidades_medicos = C.especialidades_medico_id
+WHERE TIMESTAMPDIFF(YEAR,C.data_hora,P.data_nascimento) < 18 AND NOT ES.especialidade =  "Pediatra"
+ORDER BY data_hora
+
+
+#Nome do paciente, nome do médico, data da internação e procedimentos das internações realizadas por médicos da especialidade “gastroenterologia”, que tenham acontecido em “enfermaria”.
+
+#Os nomes dos médicos, seus números de registro no CRM e a quantidade de consultas que cada um realizou
+
+#Os nomes, os números de registro no CRE dos enfermeiros que participaram de mais de uma internação e os números de internações referentes a esses profissionais.
+
+
+#extra idealizada por  mim
+#busca todos as internacoes e enfermeiro responsavel
