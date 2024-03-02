@@ -82,3 +82,4 @@ HAVING  COUNT(I.enfermeiro_id = F.id_enfermeiros) >= 2
 
 #extra idealizada por  mim
 #busca todos as internacoes e enfermeiro responsavel
+SELECT * FROM internacoes JOIN enfermeiros ON enfermeiros.id_enfermeiros = internacoes.enfermeiro_id
