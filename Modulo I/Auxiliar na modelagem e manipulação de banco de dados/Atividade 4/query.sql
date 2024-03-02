@@ -34,7 +34,7 @@ JOIN quartos as Q ON I.quarto_id = Q.id_quartos
 JOIN tipo_quarto as TQ ON Q.id_quartos = TQ.id_tipo_quarto
 
 
-#data procedimento e número de quarto de internações em quartos do tipo “apartamento”
+#Data procedimento e número de quarto de internações em quartos do tipo “apartamento”
 SELECT I.data_entrada as Data_Entrada, I.procedimento, quarto_id as NumeroQuarto 
 FROM internacoes as I 
 JOIN quartos as Q ON I.quarto_id = Q.id_quartos
@@ -53,8 +53,24 @@ ORDER BY data_hora
 
 
 #Nome do paciente, nome do médico, data da internação e procedimentos das internações realizadas por médicos da especialidade “gastroenterologia”, que tenham acontecido em “enfermaria”.
+SELECT P.nome as pacientes,M.nome as medico,I.data_entrada as dataEnternacao, I.procedimento
+FROM pacientes as P
+JOIN internacoes as I
+ON P.id_pacientes = I.paciente_id
+JOIN medicos as M
+JOIN medicos_especialidades as ES
+ON M.idmedicos = ES.medico_id
+JOIN especialidades_medicos as EST
+ON EST.id_especialidades_medicos = ES.medico_id
+JOIN quartos AS Q 
+JOIN tipo_quarto as TQ
+ON Q.id_quartos = TQ.id_tipo_quarto
+WHERE EST.especialidade = "Gastroenterologia" AND TQ.descricao = "enfermaria"
+
 
 #Os nomes dos médicos, seus números de registro no CRM e a quantidade de consultas que cada um realizou
+SELECT M.nome, SUM(C.fk_medico_responsavel = M.idmedicos) as quantidadeConsultas FROM medicos as M JOIN consultas as C GROUP BY M.nome
+
 
 #Os nomes, os números de registro no CRE dos enfermeiros que participaram de mais de uma internação e os números de internações referentes a esses profissionais.
 
