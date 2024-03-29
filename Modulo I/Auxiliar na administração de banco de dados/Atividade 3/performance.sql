@@ -5,8 +5,7 @@ Ordena-se pela data de venda, as mais recentes primeiro.
 **/
 
 CREATE INDEX idx_pay ON venda(id);
-EXPLAIN
-SELECT
+CREATE VIEW relatorio_vendas AS SELECT
     V.data,
     V.valor_total,
     P.nome,
@@ -25,3 +24,14 @@ WHERE
     V.tipo_pagamento = 'D'
 ORDER BY
     V.data;
+
+
+/***
+consulta para encontrar todas as vendas de produtos de um dado fabricante
+Mostrar dados do produto, quantidade vendida, data da venda.
+Ordena-se pelo nome do produto.
+***/
+CREATE INDEX indx_fabricant ON produto(fabricante);
+CREATE VIEW vendas_fabricante AS SELECT p.nome, iv.quantidade, v.data
+FROM produto as p JOIN item_venda as iv ON p.id = iv.produto_id JOIN venda as v ON v.id = iv.venda_id
+WHERE p.fabricante like '%lar%';
