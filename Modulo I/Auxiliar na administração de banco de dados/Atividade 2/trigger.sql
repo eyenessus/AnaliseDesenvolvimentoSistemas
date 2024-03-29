@@ -1,0 +1,9 @@
+DELIMITER / / CREATE TRIGGER security BEFORE
+INSERT
+    ON usuario FOR EACH ROW BEGIN
+SET
+    NEW.senha = MD5(NEW.senha);
+
+END;
+
+/ / DELIMITER;
