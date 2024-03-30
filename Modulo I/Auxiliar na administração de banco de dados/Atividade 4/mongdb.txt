@@ -1,0 +1,44 @@
+use enounStore
+switched to db enounStore
+
+db.produto.insertOne({
+name:'computer',
+description:'Um computador',
+manufacturer:'Dell'
+})
+
+{
+  acknowledged: true,
+  insertedId: ObjectId('66084e0dfd07241e35e70eb3')
+}
+
+db.produto.updateOne(
+  {name:'computer'},
+  {$set:{name:"video game"}}
+)
+
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+db.produto.findOne({name:"video game"})
+
+{
+  _id: ObjectId('66084e0dfd07241e35e70eb3'),
+  name: 'video game',
+  description: 'Um computador',
+  manufacturer: 'Dell'
+}
+
+db.produto.findOne({manufacturer:"Dell"})
+
+{
+  _id: ObjectId('66084e0dfd07241e35e70eb3'),
+  name: 'video game',
+  description: 'Um computador',
+  manufacturer: 'Dell'
+}
