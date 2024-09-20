@@ -1,0 +1,22 @@
+user - cliente
+cpf - número do cpf do cliente
+email - e-mail do cliente
+datanascimento - data de Nascimento do cliente
+telephone - telephone do cliente
+data_cadastro - data de cadastro do cliente
+
+
+conta - conta bancaria do cliente
+saldo - saldo da conta
+pix - chaves pix
+agencia -agencia bancaria
+user_user_id - identificação do cliente
+
+
+endereco - endereço do cliente
+rua  - nome da rua
+numero - numero da residencia
+bairro - bairro
+estado - estado 
+pais - pais
+
